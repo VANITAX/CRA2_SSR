@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Helmet from 'react-helmet';
-import logo from '../../assets/logo.jpg';
 
 const SITE_URL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
-    : 'https://cra-ssr.herokuapp.com';
+    : '';
 
-const FACEBOOK_APP_ID = 'XXXXXXXXX';
+const FACEBOOK_APP_ID = '';
 
-const defaultTitle = 'My Website';
-const defaultDescription =
-  'This is a really awesome website where we can render on the server. Supa cool.';
-const defaultImage = `${SITE_URL}${logo}`;
-const defaultTwitter = '@cereallarceny';
+const defaultTitle = '';
+const defaultDescription = '';
+const defaultImage = ``;
+const defaultTwitter = '';
 const defaultSep = ' | ';
 
 class Page extends Component {

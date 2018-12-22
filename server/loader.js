@@ -17,7 +17,7 @@ import App from '../src/app/app';
 import manifest from '../build/asset-manifest.json';
 
 // Some optional Redux functions related to user authentication
-import { setCurrentUser, logoutUser } from '../src/modules/auth';
+// import { setCurrentUser, logoutUser } from '../src/modules/auth';
 
 // LOADER
 export default (req, res) => {
@@ -58,11 +58,11 @@ export default (req, res) => {
 
       // If the user has a cookie (i.e. they're signed in) - set them as the current user
       // Otherwise, we want to set the current state to be logged out, just in case this isn't the default
-      if ('mywebsite' in req.cookies) {
-        store.dispatch(setCurrentUser(req.cookies.mywebsite));
-      } else {
-        store.dispatch(logoutUser());
-      }
+      // if ('mywebsite' in req.cookies) {
+      //   store.dispatch(setCurrentUser(req.cookies.mywebsite));
+      // } else {
+      //   store.dispatch(logoutUser());
+      // }
 
       const context = {};
       const modules = [];

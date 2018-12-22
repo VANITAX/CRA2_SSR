@@ -3,7 +3,7 @@ import { render, hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import Loadable from 'react-loadable';
 import { Frontload } from 'react-frontload';
-import { ConnectedRouter } from 'connected-react-router';
+import { ConnectedRouter } from 'connected-react-router/immutable';
 import createStore from './store';
 
 import App from './app/app';

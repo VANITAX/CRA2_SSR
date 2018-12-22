@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "CRA2_SSR",
+  "name": "Create React App SSR",
   "icons": [
     {
       "src": "favicon.ico",
