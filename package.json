@@ -44,11 +44,6 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
   "devDependencies": {
     "prettier": "1.14.3",
     "pretty-quick": "^1.7.0"
