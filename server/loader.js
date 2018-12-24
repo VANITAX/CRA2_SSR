@@ -7,7 +7,6 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import Helmet from 'react-helmet';
 import { Provider } from 'react-redux';
-import { StaticRouter } from 'react-router';
 import { Frontload, frontloadServerRender } from 'react-frontload';
 import Loadable from 'react-loadable';
 
@@ -85,11 +84,9 @@ export default (req, res) => {
         renderToString(
           <Loadable.Capture report={m => modules.push(m)}>
             <Provider store={store}>
-              <StaticRouter location={req.url} context={context}>
-                <Frontload isServer={true}>
-                  <App />
-                </Frontload>
-              </StaticRouter>
+              <Frontload isServer={true}>
+                <App />
+              </Frontload>
             </Provider>
           </Loadable.Capture>
         )

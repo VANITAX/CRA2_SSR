@@ -1,8 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
-import { connectRouter, routerMiddleware } from 'connected-react-router/immutable';
 import thunk from 'redux-thunk';
-import { createBrowserHistory, createMemoryHistory } from 'history';
 import rootReducer from './app/reducers';
 
 // A nice helper to tell us if we're on the server
@@ -14,12 +12,6 @@ export const isServer = !(
 
 export default (url = '/') => {
   // Create a history depending on the environment
-  const history = isServer
-    ? createMemoryHistory({
-        initialEntries: [url]
-      })
-    : createBrowserHistory();
-
   const enhancers = [];
 
   // Dev tools are helpful
@@ -31,7 +23,7 @@ export default (url = '/') => {
     }
   }
 
-  const middleware = [thunk, routerMiddleware(history)];
+  const middleware = [thunk];
   const composedEnhancers = compose(
     applyMiddleware(...middleware),
     ...enhancers
@@ -47,13 +39,10 @@ export default (url = '/') => {
 
   // Create the store
   const store = createStore(
-    rootReducer(connectRouter(history)),
+    rootReducer(),
     fromJS(initialState),
     composedEnhancers
   );
 
-  return {
-    store,
-    history
-  };
+  return { store };
 };

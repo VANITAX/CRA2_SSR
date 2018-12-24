@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
 import Helmet from 'react-helmet';
 
 const SITE_URL =
@@ -16,21 +15,18 @@ const defaultTwitter = '';
 const defaultSep = ' | ';
 
 class Page extends Component {
-  getMetaTags(
-    {
-      title,
-      description,
-      image,
-      contentType,
-      twitter,
-      noCrawl,
-      published,
-      updated,
-      category,
-      tags
-    },
-    pathname
-  ) {
+  getMetaTags({
+    title,
+    description,
+    image,
+    contentType,
+    twitter,
+    noCrawl,
+    published,
+    updated,
+    category,
+    tags
+  }) {
     const theTitle = title
       ? (title + defaultSep + defaultTitle).substring(0, 60)
       : defaultTitle;
@@ -52,7 +48,7 @@ class Page extends Component {
       { name: 'twitter:image:src', content: theImage },
       { property: 'og:title', content: theTitle },
       { property: 'og:type', content: contentType || 'website' },
-      { property: 'og:url', content: SITE_URL + pathname },
+      { property: 'og:url', content: SITE_URL },
       { property: 'og:image', content: theImage },
       { property: 'og:description', content: theDescription },
       { property: 'og:site_name', content: defaultTitle },
@@ -81,7 +77,7 @@ class Page extends Component {
 
   render() {
     const { children, id, className, ...rest } = this.props;
-
+    console.log(defaultTitle);
     return (
       <div id={id} className={className}>
         <Helmet
@@ -93,13 +89,7 @@ class Page extends Component {
           title={
             rest.title ? rest.title + defaultSep + defaultTitle : defaultTitle
           }
-          link={[
-            {
-              rel: 'canonical',
-              href: SITE_URL + this.props.location.pathname
-            }
-          ]}
-          meta={this.getMetaTags(rest, this.props.location.pathname)}
+         meta={this.getMetaTags(rest)}
         />
         {children}
       </div>
@@ -107,4 +97,4 @@ class Page extends Component {
   }
 }
 
-export default withRouter(Page);
+export default Page;

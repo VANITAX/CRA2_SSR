@@ -3,24 +3,21 @@ import { render, hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import Loadable from 'react-loadable';
 import { Frontload } from 'react-frontload';
-import { ConnectedRouter } from 'connected-react-router/immutable';
 import createStore from './store';
 
 import App from './app/app';
 import './index.css';
 
 // Create a store and get back itself and its history object
-const { store, history } = createStore();
+const { store } = createStore();
 
 // Running locally, we should run on a <ConnectedRouter /> rather than on a <StaticRouter /> like on the server
 // Let's also let React Frontload explicitly know we're not rendering on the server here
 const Application = (
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Frontload noServerRender={true}>
-        <App />
-      </Frontload>
-    </ConnectedRouter>
+    <Frontload noServerRender={true}>
+      <App />
+    </Frontload>
   </Provider>
 );
 
